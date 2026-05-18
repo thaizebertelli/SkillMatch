@@ -48,6 +48,42 @@ const vagas = [
     },
 ];
 
+//Funções
+
+function analisarCompatibilidade(candidato, vaga){
+
+    //Habilidades possuidas
+    const habilidadesPossuidas = vaga.requisitos.filter(requisito => candidato.habilidades.includes(requisito));
+
+    //habilidades faltantes
+    const habilidadesFaltantes = vaga.requisitos.filter(requisito => !candidato.habilidades.includes(requsiito));
+    
+    //cálculo porcentagem
+    const compatibilidade = (habilidadesPossuidas.lenght / vaga.requisitos.lenght) * 100;
+
+    //Classificação
+    let classificação = "";
+
+    if (compatibilidade >= 80){
+        classificação = "Alta compatibilidade"
+    } else if (compatibilidade >= 50){
+        classificação = "Média compatibilidade"
+    } else {
+        classificação = "Baixa compatibilidade"
+    }
+
+    //Retorno Informações
+    return {
+        empresa:vaga.empresa,
+        cargo:vaga.cargo,
+        compatibilidade: compatibilidade.toFixed(0),
+        habilidadesPossuidas,
+        habilidadesFaltantes,
+        classificação
+    };
+}
+
+
 //Teste inicial
 console.log("Sistema SkillMatch iniciado com sucesso!");
 console.log(candidato);
