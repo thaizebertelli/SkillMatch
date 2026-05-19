@@ -56,7 +56,7 @@ function analisarCompatibilidade(candidato, vaga){
     const habilidadesPossuidas = vaga.requisitos.filter(requisito => candidato.habilidades.includes(requisito));
 
     //habilidades faltantes
-    const habilidadesFaltantes = vaga.requisitos.filter(requisito => !candidato.habilidades.includes(requsiito));
+    const habilidadesFaltantes = vaga.requisitos.filter(requisito => !candidato.habilidades.includes(requisito));
     
     //cálculo porcentagem
     const compatibilidade = (habilidadesPossuidas.lenght / vaga.requisitos.lenght) * 100;
