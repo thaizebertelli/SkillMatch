@@ -99,10 +99,16 @@ const melhorVaga = resultados.reduce((melhor, atual) => {
     }
 });
 
+//Gerar lista das habilidades que faltam
+
+const habilidadesParaEstudar = [
+    ...new Set(
+        resultados.flatMap(resultado => resultado.habilidadesFaltantes))
+];
 
 //Resultado da compatibilidade
 
-console.log("-----Ánalise de Vagas-----");
+console.log("-----Análise de Vagas-----");
 
 vagas.forEach(vaga => { let resultado = analisarCompatibilidade(candidato, vaga);
 
@@ -129,3 +135,10 @@ COMPATIBILIDADE: ${melhorVaga.compatibilidade}%
 ----------------------------`
 
 )
+
+//Resultado da recomendação de estudos
+
+console.log(`-----Recomendação de Estudos-----
+
+Habilidades que aparecem nas vagas que você não possui: ${habilidadesParaEstudar.join("- ")}`
+);
