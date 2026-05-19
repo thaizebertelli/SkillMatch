@@ -8,44 +8,83 @@ const candidato = {
     estudandoAtualmente: true,
 };
 
+//Classe principal das vagas
+
+class Vaga {
+
+    constructor(id, empresa, cargo, requisitos, salario, modalidade, beneficios, ativa) {
+
+        this.id = id;
+        this.empresa = empresa;
+        this.cargo = cargo;
+        this.requisitos = requisitos;
+        this.salario = salario;
+        this.modalidade = modalidade;
+        this.beneficios = beneficios;
+        this.ativa = ativa;
+    }
+
+    exibirResumo() {
+        return `${this.cargo} na empresa ${this.empresa}`;
+    }
+}
+
+//Classe vagas front-end
+
+class VagaFrontEnd extends Vaga {
+
+    constructor( id, empresa, cargo, requisitos, salario, modalidade, beneficios, ativa, nivel) {
+
+        super(id, empresa, cargo, requisitos, salario, modalidade, beneficios, ativa);
+
+        this.nivel = nivel;
+    }
+
+    exibirNivel() {
+        return `Nível da vaga: ${this.nivel}`;
+    }
+}
+
 //Lista de vagas
 
 const vagas = [
-    {
-        id: 1,
-        empresa: "TechStart",
-        cargo: "Desenvolvedor Front-End Júnior",
-        requisitos: ["JavaScript", "GitHub", "Lógica de Programação", "HTML", "CSS"],
-        Salario: 2800,
-        modalidade: "Remoto",
-        nivel: "Júnior",
-        beneficios: ["Vale alimentação", "Plano de saúde", "Auxílio home office"],
-        ativa: true
-    },
 
-    {
-        id: 2,
-        empresa: "CodeLab",
-        cargo: "Estágio Front-End",
-        requisitos: ["JavaScript", "Kanban", "HTML"],
-        Salario: 1200,
-        modalidade: "Híbrido",
-        nivel: "Estágio",
-        beneficios: ["Vale Transporte", "Curso interno"],
-        ativa: true
-    },
+    new VagaFrontEnd(
+        1,
+        "TechStart",
+        "Desenvolvedor Front-End Júnior",
+        ["JavaScript", "GitHub", "Lógica de Programação", "HTML", "CSS"],
+        2800,
+        "Remoto",
+        ["Vale alimentação", "Plano de saúde", "Auxílio home office"],
+        true,
+        "Júnior"
+    ),
 
-    {
-        id: 3,
-        empresa: "WebSolutions",
-        cargo: "Programador Front-end Júnior",
-        requisitos: ["JavaScript", "Figma", "HTML", "CSS"],
-        Salario: 2500,
-        modalidade: "Presencial",
-        nivel: "Júnior",
-        beneficios: ["Vale alimentação", "Plano de saúde", "Vale transporte", "Gympass"],
-        ativa: false
-    },
+    new VagaFrontEnd(
+        2,
+        "CodeLab",
+        "Estágio Front-End",
+        ["JavaScript", "Kanban", "HTML"],
+        1200,
+        "Híbrido",
+        ["Vale Transporte", "Curso interno"],
+        true,
+        "Estágio"
+    ),
+
+    new VagaFrontEnd(
+        3,
+        "WebSolutions",
+        "Programador Front-end Júnior",
+        ["JavaScript", "Figma", "HTML", "CSS"],
+        2500,
+        "Presencial",
+        ["Vale alimentação", "Plano de saúde", "Vale transporte", "Gympass"],
+        false,
+        "Júnior"
+    )
+
 ];
 
 //Funções
@@ -140,5 +179,5 @@ COMPATIBILIDADE: ${melhorVaga.compatibilidade}%
 
 console.log(`-----Recomendação de Estudos-----
 
-Habilidades que aparecem nas vagas que você não possui: ${habilidadesParaEstudar.join("- ")}`
+Habilidades que aparecem nas vagas que você não possui: ${habilidadesParaEstudar.join(" - ")}`
 );
