@@ -83,11 +83,28 @@ function analisarCompatibilidade(candidato, vaga){
     };
 }
 
+//Gerar resultados para analisar a vaga com maior compatibilidade
+
+const resultados = vagas.map(vaga =>
+    analisarCompatibilidade(candidato, vaga)
+);
+
+//Analisar vaga com maior compatibilidade
+
+const melhorVaga = resultados.reduce((melhor, atual) => {
+    if (Number(atual.compatibilidade) > Number(melhor.compatibilidade)){
+        return atual;
+    } else{
+        return melhor;
+    }
+});
+
+
 //Resultado da compatibilidade
 
-console.log("-----Ánalise de vagas-----");
+console.log("-----Ánalise de Vagas-----");
 
-vagas.forEach(vaga => { let resultado = analisarCompatibilidade(candidato,vaga);
+vagas.forEach(vaga => { let resultado = analisarCompatibilidade(candidato, vaga);
 
     console.log(`EMPRESA: ${resultado.empresa}
 CARGO: ${resultado.cargo}
@@ -101,3 +118,14 @@ HABILIDADES FALTANTES: ${resultado.habilidadesFaltantes.join(" - ")}
 ----------------------------`
      );
 });
+
+//Resultado da melhor vaga
+
+console.log(`-----Melhor Vaga-----
+    
+EMPRESA: ${melhorVaga.empresa}
+CARGO: ${melhorVaga.cargo}
+COMPATIBILIDADE: ${melhorVaga.compatibilidade}%
+----------------------------`
+
+)
