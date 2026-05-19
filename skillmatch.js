@@ -3,7 +3,7 @@
 const candidato = {
     nome: "Thaize Bertelli",
     area: ["Front-End", "UX/UI Design"],
-    habilidades: ["JavaScript", "GitHub", "Kanban", "Figma", "HTML", "CSS"],
+    habilidades: ["JavaScript", "GitHub", "Figma", "HTML", "CSS"],
     experienciaMeses: 8,
     estudandoAtualmente: true,
 };
@@ -59,17 +59,17 @@ function analisarCompatibilidade(candidato, vaga){
     const habilidadesFaltantes = vaga.requisitos.filter(requisito => !candidato.habilidades.includes(requisito));
     
     //cálculo porcentagem
-    const compatibilidade = (habilidadesPossuidas.lenght / vaga.requisitos.lenght) * 100;
+    const compatibilidade = (habilidadesPossuidas.length / vaga.requisitos.length) * 100;
 
     //Classificação
-    let classificação = "";
+    let classificacao = "";
 
     if (compatibilidade >= 80){
-        classificação = "Alta compatibilidade"
+        classificacao = "Alta compatibilidade"
     } else if (compatibilidade >= 50){
-        classificação = "Média compatibilidade"
+        classificacao = "Média compatibilidade"
     } else {
-        classificação = "Baixa compatibilidade"
+        classificacao = "Baixa compatibilidade"
     }
 
     //Retorno Informações
@@ -79,12 +79,25 @@ function analisarCompatibilidade(candidato, vaga){
         compatibilidade: compatibilidade.toFixed(0),
         habilidadesPossuidas,
         habilidadesFaltantes,
-        classificação
+        classificacao
     };
 }
 
+//Resultado da compatibilidade
 
-//Teste inicial
-console.log("Sistema SkillMatch iniciado com sucesso!");
-console.log(candidato);
-console.log(vagas);
+console.log("-----Ánalise de vagas-----");
+
+vagas.forEach(vaga => { let resultado = analisarCompatibilidade(candidato,vaga);
+
+    console.log(`EMPRESA: ${resultado.empresa}
+CARGO: ${resultado.cargo}
+        
+COMPATIBILIDADE: ${resultado.compatibilidade}%
+CLASSIFICAÇÃO: ${resultado.classificacao}
+                
+HABILIDADE POSSUIDAS: ${resultado.habilidadesPossuidas.join(" - ")}
+                
+HABILIDADES FALTANTES: ${resultado.habilidadesFaltantes.join(" - ")}
+----------------------------`
+     );
+});
