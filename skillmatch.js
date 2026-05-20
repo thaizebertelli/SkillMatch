@@ -53,7 +53,7 @@ const vagas = [
         1,
         "TechStart",
         "Desenvolvedor Front-End Júnior",
-        ["JavaScript", "GitHub", "Lógica de Programação", "HTML", "CSS"],
+        ["Kanban", "Lógica de Programação"],
         2800,
         "Remoto",
         ["Vale alimentação", "Plano de saúde", "Auxílio home office"],
@@ -174,12 +174,14 @@ async function iniciarSistema() {
 
 console.log("-----Análise de Vagas carregas com sucesso!-----");
 
-resultados.forEach(resultado => {
+vagas.forEach(vaga => {
 
-    console.log(`EMPRESA: ${resultado.empresa}
-CARGO: ${resultado.cargo}
-        
-COMPATIBILIDADE: ${resultado.compatibilidade}%
+    let resultado = analisarCompatibilidade(candidato, vaga);
+
+    console.log(vaga.exibirResumo());
+    console.log(vaga.exibirNivel());
+
+    console.log(`COMPATIBILIDADE: ${resultado.compatibilidade}%
 CLASSIFICAÇÃO: ${resultado.classificacao}
                 
 HABILIDADE POSSUIDAS: ${resultado.habilidadesPossuidas.join(" - ")}
