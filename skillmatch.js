@@ -238,7 +238,7 @@ function criarContadorDeAnalises() {
 
 const contadorAnalises = criarContadorDeAnalises();
 
-//Execução callback e closure
+//Execução  Callback e Closure
 
 finalizarAnalise(candidato.nome, exibirMensagemFinal);
 
