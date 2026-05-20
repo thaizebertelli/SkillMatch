@@ -87,7 +87,7 @@ const vagas = [
 
 ];
 
-//Funções
+//Funççao análise de compatibilidade
 
 function analisarCompatibilidade(candidato, vaga){
 
@@ -181,3 +181,42 @@ console.log(`-----Recomendação de Estudos-----
 
 Habilidades que aparecem nas vagas que você não possui: ${habilidadesParaEstudar.join(" - ")}`
 );
+
+
+//Função com callback
+
+function finalizarAnalise(nomeCandidato, callback) {
+
+    console.log("Análise finalizada com sucesso!");
+
+    callback(nomeCandidato);
+}
+
+//Mensagem final
+
+function exibirMensagemFinal(nome) {
+
+    console.log(`${nome}, revise as habilidades faltantes e continue evoluindo seus estudos Front-End!`);
+}
+
+//Closure para contar análises
+
+function criarContadorDeAnalises() {
+
+    let totalAnalises = 0;
+
+    return function () {
+
+        totalAnalises++;
+
+        return totalAnalises;
+    };
+}
+
+const contadorAnalises = criarContadorDeAnalises();
+
+//Execução callback e closure
+
+finalizarAnalise(candidato.nome, exibirMensagemFinal);
+
+console.log(`Total de análises realizadas: ${contadorAnalises()}`);
