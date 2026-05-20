@@ -108,7 +108,7 @@ function analisarVagasSimuladas() {
     });
 }
 
-//Funççao análise de compatibilidade
+//Função análise de compatibilidade
 
 function analisarCompatibilidade(candidato, vaga){
 

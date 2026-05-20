@@ -131,6 +131,8 @@ Branches utilizadas:
 
 - `main`
 - `docs/readme`
+- `develop`
+- `feat/analise-vagas`
 
 ---
 
