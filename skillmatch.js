@@ -87,6 +87,27 @@ const vagas = [
 
 ];
 
+//Promise para simular análise das vagas
+
+function analisarVagasSimuladas() {
+
+    return new Promise((resolve) => {
+
+        console.log("Analisando compatibilidade das vagas...");
+
+        setTimeout(() => {
+
+            const resultadosAnalise = vagas.map(vaga =>
+                analisarCompatibilidade(candidato, vaga)
+            );
+
+            resolve(resultadosAnalise);
+
+        }, 2000);
+
+    });
+}
+
 //Funççao análise de compatibilidade
 
 function analisarCompatibilidade(candidato, vaga){
@@ -147,9 +168,13 @@ const habilidadesParaEstudar = [
 
 //Resultado da compatibilidade
 
-console.log("-----Análise de Vagas-----");
+async function iniciarSistema() {
 
-vagas.forEach(vaga => { let resultado = analisarCompatibilidade(candidato, vaga);
+    const resultados = await analisarVagasSimuladas();
+
+console.log("-----Análise de Vagas carregas com sucesso!-----");
+
+resultados.forEach(resultado => {
 
     console.log(`EMPRESA: ${resultado.empresa}
 CARGO: ${resultado.cargo}
@@ -172,7 +197,6 @@ EMPRESA: ${melhorVaga.empresa}
 CARGO: ${melhorVaga.cargo}
 COMPATIBILIDADE: ${melhorVaga.compatibilidade}%
 ----------------------------`
-
 )
 
 //Resultado da recomendação de estudos
@@ -181,7 +205,6 @@ console.log(`-----Recomendação de Estudos-----
 
 Habilidades que aparecem nas vagas que você não possui: ${habilidadesParaEstudar.join(" - ")}`
 );
-
 
 //Função com callback
 
@@ -220,3 +243,8 @@ const contadorAnalises = criarContadorDeAnalises();
 finalizarAnalise(candidato.nome, exibirMensagemFinal);
 
 console.log(`Total de análises realizadas: ${contadorAnalises()}`);
+
+}
+
+
+iniciarSistema();
