@@ -157,7 +157,6 @@ Neste projeto, foi simulada uma busca de análises de vagas utilizando JavaScrip
 
 ---
 
-docs: atualiza README do projeto
 ## Vídeo de apresentação
 
 O vídeo de demonstração do projeto pode ser acessado pelo link abaixo:
@@ -167,3 +166,5 @@ O vídeo de demonstração do projeto pode ser acessado pelo link abaixo:
 ---
 
 ## Autora
+
+Thaize de Paula Bertelli
